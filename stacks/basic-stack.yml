@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  svc:
+    image: ${SNET_IMAGE}
+  networks:
+    - public
+  deploy:
+      placement:
+        constraints:
+          - node.platform.os == linux
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.${SNET_BASENAME}.rule=Host(`${SNET_HOSTNAME}`)
+        - traefik.http.routers.${SNET_BASENAME}.entrypoints=${SNET_ENTRYPOINT}
+        - traefik.http.routers.${SNET_BASENAME}.service=svc
+        - traefik.http.routers.${SNET_BASENAME}.tls=true
+        - traefik.http.routers.${SNET_BASENAME}.tls.certresolver=le
+        - traefik.http.services.${SNET_BASENAME}.loadbalancer.server.port=${SNET_PORT}
+
+networks:
+  public:
+    external: true
