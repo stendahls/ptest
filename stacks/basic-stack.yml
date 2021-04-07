@@ -3,9 +3,9 @@ version: '3.3'
 services:
   svc:
     image: ${SNET_IMAGE}
-  networks:
-    - public
-  deploy:
+    networks:
+      - public
+    deploy:
       placement:
         constraints:
           - node.platform.os == linux
