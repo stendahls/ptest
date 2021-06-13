@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  svc:
+    image: ${SNET_IMAGE}
+    volumes:
+      - data:${SNET_DATA_MOUNTPOINT}
+    deploy:
+      placement:
+        constraints:
+          - node.platform.os == linux
+
+volumes:
+  data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /srv/cdata/${SNET_BASENAME}

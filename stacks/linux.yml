@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+  svc:
+    image: ${SNET_IMAGE}
+    deploy:
+      placement:
+        constraints:
+          - node.platform.os == linux
