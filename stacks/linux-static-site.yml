@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  svc:
+    image: harbor.stendahls.dev/stendahls/static-hosting-server:latest
+    networks:
+      - public
+    volumes:
+      - data:/usr/src/app/public
+    deploy:
+      placement:
+        constraints:
+          - node.platform.os == linux
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.${SNET_BASENAME}.rule=Host(`${SNET_HOSTNAME}`)
+        - traefik.http.routers.${SNET_BASENAME}.entrypoints=${SNET_ENTRYPOINT}
+        - traefik.http.routers.${SNET_BASENAME}.tls=true
+        - traefik.http.routers.${SNET_BASENAME}.tls.certresolver=le
+        - traefik.http.services.${SNET_BASENAME}.loadbalancer.server.port=3000
+
+networks:
+  public:
+    external: true
+
+volumes:
+  data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /srv/sites/${SNET_BASENAME}
