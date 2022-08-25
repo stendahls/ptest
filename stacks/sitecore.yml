@@ -19,7 +19,7 @@
     networks:
       - public
     volumes:
-      - data/mssql-data:c:\data
+      - data:/mssql-data:c:\data
     environment:
       SA_PASSWORD: ${SQL_SA_PASSWORD}
       ACCEPT_EULA: "Y"
@@ -38,7 +38,7 @@
     networks:
       - public
     volumes:
-      - data/solr-data:c:\data
+      - data:/solr-data:c:\data
     deploy:
       labels:
         - traefik.enable=true
@@ -56,7 +56,7 @@
       - public
     environment:
       SITECORE_SOLR_CONNECTION_STRING: http://solr:8983/solr
-      SOLR_CORE_PREFIX_NAME: ${SOLR_CORE_PREFIX_NAME}
+      SOLR_CORE_PREFIX_NAME: sitecore
   id:
     image: ${SITECORE_DOCKER_REGISTRY}sitecore-id6:${SITECORE_VERSION}
     networks:
@@ -93,7 +93,7 @@
       Sitecore_ConnectionStrings_Solr.Search: http://solr:8983/solr;solrCloud=true
       Sitecore_ConnectionStrings_Redis.Sessions: redis:6379,ssl=False,abortConnect=False
       Sitecore_License: ${SITECORE_LICENSE}
-      SOLR_CORE_PREFIX_NAME: ${SOLR_CORE_PREFIX_NAME}
+      SOLR_CORE_PREFIX_NAME: sitecore
       MEDIA_REQUEST_PROTECTION_SHARED_SECRET: ${MEDIA_REQUEST_PROTECTION_SHARED_SECRET}
     healthcheck:
       test: ["CMD", "powershell", "-command", "C:/Healthchecks/Healthcheck.ps1"]
@@ -128,7 +128,7 @@
       Sitecore_Identity_Server_InternalAuthority: http://id
       Sitecore_Identity_Server_CallbackAuthority: https://${CM_HOST}
       Sitecore_Identity_Server_Require_Https: "false"
-      SOLR_CORE_PREFIX_NAME: ${SOLR_CORE_PREFIX_NAME}
+      SOLR_CORE_PREFIX_NAME: sitecore
       MEDIA_REQUEST_PROTECTION_SHARED_SECRET: ${MEDIA_REQUEST_PROTECTION_SHARED_SECRET}
     healthcheck:
       test: ["CMD", "powershell", "-command", "C:/Healthchecks/Healthcheck.ps1"]
