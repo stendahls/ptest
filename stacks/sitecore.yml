@@ -42,7 +42,7 @@
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.solr.rule=Host(`${SOLAR_HOST}.stendahls.dev`)
+        - traefik.http.routers.solr.rule=Host(`${SOLAR_HOST}`)
         - traefik.http.routers.solr.entrypoints=https
         - traefik.http.routers.solr.tls=true
         - traefik.http.routers.solr.tls.certresolver=le
