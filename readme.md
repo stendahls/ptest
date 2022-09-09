@@ -1,0 +1,1 @@
+# Stendahls Portainer Templates
