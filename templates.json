@@ -1,0 +1,295 @@
+{
+    "version": "2",
+    "templates": [
+      {
+        "type": 2,
+        "title": "Service (linux)",
+        "description": "Simple non-accessible service",
+        "note": "",
+        "categories": [
+          "webserver"
+        ],
+        "platform": "linux",
+        "repository": {
+          "url": "https://github.com/stendahls/ptest",
+          "stackfile": "stacks/linux.yml"
+        },
+        "env": [
+          {
+            "name": "SNET_IMAGE",
+            "label": "Container image",
+            "description": "The image to run"
+          }
+        ]
+      },
+      {
+        "type": 2,
+        "title": "Service (linux, https)",
+        "description": "Simple https-accessible service",
+        "note": "",
+        "categories": [
+          "webserver"
+        ],
+        "platform": "linux",
+        "repository": {
+          "url": "https://github.com/stendahls/ptest",
+          "stackfile": "stacks/linux-net.yml"
+        },
+        "env": [
+          {
+            "name": "SNET_IMAGE",
+            "label": "Container image",
+            "description": "The image to run"
+          },
+          {
+            "name": "SNET_BASENAME",
+            "label": "Service basename",
+            "description": "Basename of the service"
+          },
+          {
+            "name": "SNET_HOSTNAME",
+            "label": "Service hostname",
+            "description": "Service hostname (should end in .stendahls.dev)",
+            "default": ".stendahls.dev"
+          },
+          {
+            "name": "SNET_ENTRYPOINT",
+            "label": "Entrypoint(s)",
+            "description": "Entrypoint(s) service is to be exposed at (https or ext-https)",
+            "select": [
+              {
+                "text": "https (internal)",
+                "value": "https",
+                "default": true
+              },
+              {
+                "text": "https (external)",
+                "value": "ext-https"
+              }
+            ]
+          },
+          {
+            "name": "SNET_PORT",
+            "label": "Service port",
+            "description": "The port service listens to"
+          }
+        ]
+      },
+      {
+        "type": 2,
+        "title": "Service (linux, storage)",
+        "description": "Simple service with persistent storage",
+        "note": "",
+        "categories": [
+          "webserver"
+        ],
+        "platform": "linux",
+        "repository": {
+          "url": "https://github.com/stendahls/ptest",
+          "stackfile": "stacks/linux-storage.yml"
+        },
+        "env": [
+          {
+            "name": "SNET_IMAGE",
+            "label": "Container image",
+            "description": "The image to run"
+          },
+          {
+            "name": "SNET_BASENAME",
+            "label": "Service basename",
+            "description": "Basename of the service"
+          },
+          {
+            "name": "SNET_DATA_MOUNTPOINT",
+            "label": "Volume mount point",
+            "description": "Mount point of persistent volume in container",
+            "default": "/data"
+          }
+        ]
+      },
+      {
+        "type": 2,
+        "title": "Service (linux, https, storage)",
+        "description": "Simple https-accessible service with persistent storage",
+        "note": "",
+        "categories": [
+          "webserver"
+        ],
+        "platform": "linux",
+        "repository": {
+          "url": "https://github.com/stendahls/ptest",
+          "stackfile": "stacks/linux-net-storage.yml"
+        },
+        "env": [
+          {
+            "name": "SNET_IMAGE",
+            "label": "Container image",
+            "description": "The image to run"
+          },
+          {
+            "name": "SNET_BASENAME",
+            "label": "Service basename",
+            "description": "Basename of the service"
+          },
+          {
+            "name": "SNET_HOSTNAME",
+            "label": "Service hostname",
+            "description": "Service hostname (should end in .stendahls.dev)",
+            "default": ".stendahls.dev"
+          },
+          {
+            "name": "SNET_ENTRYPOINT",
+            "label": "Entrypoint(s)",
+            "description": "Entrypoint(s) service is to be exposed at (https or ext-https)",
+            "select": [
+              {
+                "text": "https (internal)",
+                "value": "https",
+                "default": true
+              },
+              {
+                "text": "https (external)",
+                "value": "ext-https"
+              }
+            ]
+          },
+          {
+            "name": "SNET_PORT",
+            "label": "Service port",
+            "description": "The port service listens to"
+          },
+          {
+            "name": "SNET_DATA_MOUNTPOINT",
+            "label": "Volume mount point",
+            "description": "Mount point of persistent volume in container",
+            "default": "/data"
+          }
+        ]
+      },
+      {
+        "type": 2,
+        "title": "Static site (linux, https, storage)",
+        "description": "Simple https-accessible static site with persistent storage",
+        "note": "",
+        "categories": [
+          "webserver"
+        ],
+        "platform": "linux",
+        "repository": {
+          "url": "https://github.com/stendahls/ptest",
+          "stackfile": "stacks/linux-static-site.yml"
+        },
+        "env": [
+          {
+            "name": "SNET_BASENAME",
+            "label": "Service basename",
+            "description": "Basename of the service"
+          },
+          {
+            "name": "SNET_HOSTNAME",
+            "label": "Service hostname",
+            "description": "Service hostname (should end in .stendahls.dev)",
+            "default": ".stendahls.dev"
+          },
+          {
+            "name": "SNET_ENTRYPOINT",
+            "label": "Entrypoint(s)",
+            "description": "Entrypoint(s) service is to be exposed at (https or ext-https)",
+            "select": [
+              {
+                "text": "https (internal)",
+                "value": "https",
+                "default": true
+              },
+              {
+                "text": "https (external)",
+                "value": "ext-https"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": 2,
+        "title": "SiteCore (Windows, https)",
+        "description": "SiteCore Dev Environment",
+        "note": "",
+        "categories": [
+          "webserver"
+        ],
+        "platform": "Windows",
+        "repository": {
+          "url": "https://github.com/stendahls/ptest",
+          "stackfile": "stacks/sitecore.yml"
+        },
+        "env": [
+          {
+            "name": "SNET_BASENAME",
+            "label": "Service basename",
+            "description": "Basename of the service"
+          },
+          {
+            "name": "SITECORE_VERSION",
+            "label": "Sitecore version",
+            "default": "10.2-ltsc2019"
+          },
+          {
+            "name": "SQL_SA_LOGIN",
+            "label": "Database super user",
+            "default": "sa"
+          },
+          {
+            "name": "SQL_SA_PASSWORD",
+            "label": "Database super user",
+            "default": "Password12345"
+          },
+          {
+            "name": "SITECORE_ADMIN_PASSWORD",
+            "label": "Sitecore admin user",
+            "default": "Password12345"
+          },
+          {
+            "name": "SQL_SERVER",
+            "label": "Database url",
+            "default": "mssql"
+          },
+          {
+            "name": "SOLAR_HOST",
+            "label": "Solar Url"
+          },
+          {
+            "name": "CM_HOST",
+            "label": "CM Url"
+          },
+          {
+            "name": "ID_HOST",
+            "label": "ID Url"
+          },
+          {
+            "name": "CD_HOST",
+            "label": "CD Url"
+          },
+          {
+            "name": "SITECORE_IDSECRET",
+            "label": "Sitecore id secret"
+          },
+          {
+            "name": "SITECORE_ID_CERTIFICATE",
+            "label": "Sitecore id certificate"
+          },
+          {
+            "name": "SITECORE_ID_CERTIFICATE_PASSWORD",
+            "label": "Sitecore certificate password"
+          },
+          {
+            "name": "SITECORE_LICENSE",
+            "label": "Sitecore license"
+          },
+          {
+            "name": "MEDIA_REQUEST_PROTECTION_SHARED_SECRET",
+            "label": "Media protection secret"
+          }
+        ]
+      }
+    ]
+  }
