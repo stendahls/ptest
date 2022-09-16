@@ -34,7 +34,7 @@
       SITECORE_ADMIN_PASSWORD: ${SITECORE_ADMIN_PASSWORD}
       POST_DEPLOYMENT_WAIT_PERIOD: 300
   solr:
-    image: scr.sitecore.com/sxp/nonproduction/solr:8.8.2-${SITECORE_VERSION}
+    image: solr:{SITECORE_VERSION}
     networks:
       - public
     volumes:

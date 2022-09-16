@@ -231,7 +231,34 @@
           {
             "name": "SITECORE_VERSION",
             "label": "Sitecore version",
-            "default": "10.2-ltsc2019"
+            "select": [
+              {
+                  "text": "latest",
+                  "value": "latest",
+                  "default": true
+              },
+              {
+                  "text": "8.8.2",
+                  "value": "8.8.2",
+                  "default": false
+              },
+              {
+                  "text": "8.4",
+                  "value": "8.4",
+                  "default": false
+              },
+              {
+                  "text": "8.2.0",
+                  "value": "8.2.0",
+                  "default": false
+              },
+              {
+                "text": "8.1.1",
+                "value": "8.1.1",
+                "default": false
+              }
+          ],
+            "default": "latest"
           },
           {
             "name": "SQL_SA_LOGIN",
