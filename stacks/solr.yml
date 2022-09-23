@@ -1,0 +1,59 @@
+ version: '3.3'
+ networks:
+   public:
+     external: true
+ volumes:
+  data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /srv/cdata/${SNET_BASENAME}
+ services:
+  redis:
+    image: scr.sitecore.com/sxp/sitecore-redis:${SITECORE_VERSION}
+    networks:
+      - public
+  mssql:
+    image: scr.sitecore.com/sxp/nonproduction/mssql-developer:2017-${SITECORE_VERSION}
+    networks:
+      - public
+    volumes:
+      - data:mssql-data:c:\data
+    environment:
+      SA_PASSWORD: ${SQL_SA_PASSWORD}
+      ACCEPT_EULA: "Y"
+  mssql-init:
+    image: scr.sitecore.com/sxp/sitecore-xm1-mssql-init:${SITECORE_VERSION}
+    networks:
+      - public
+    environment:
+      SQL_SERVER: ${SQL_SERVER}
+      SQL_ADMIN_LOGIN: ${SQL_SA_LOGIN}
+      SQL_ADMIN_PASSWORD: ${SQL_SA_PASSWORD}
+      SITECORE_ADMIN_PASSWORD: ${SITECORE_ADMIN_PASSWORD}
+      POST_DEPLOYMENT_WAIT_PERIOD: 300
+  solr:
+    image: solr:{SITECORE_VERSION}
+    networks:
+      - public
+    volumes:
+      - data:solr-data:c:\data
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.solr.rule=Host(`${SOLAR_HOST}`)
+        - traefik.http.routers.solr.entrypoints=https
+        - traefik.http.routers.solr.tls=true
+        - traefik.http.routers.solr.tls.certresolver=le
+        - traefik.http.services.solr.loadbalancer.server.port=8983
+    environment:
+      SOLR_MODE: solrcloud
+
+  solr-init:
+    image: scr.sitecore.com/sxp/sitecore-xm1-solr-init:${SITECORE_VERSION}
+    networks:
+      - public
+    environment:
+      SITECORE_SOLR_CONNECTION_STRING: http://solr:8983/solr
+      SOLR_CORE_PREFIX_NAME: sitecore
