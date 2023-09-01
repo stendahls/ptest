@@ -117,7 +117,7 @@
         ],
         "platform": "linux",
         "repository": {
-          "url": "https://github.com/stendahls/portainer-templates",
+          "url": "https://github.com/stendahls/portainer-templates/blob/master/",
           "stackfile": "stacks/linux-net-storage.yml"
         },
         "env": [
