@@ -11,7 +11,7 @@
         ],
         "platform": "linux",
         "repository": {
-          "url": "https://github.com/stendahls/ptest",
+          "url": "https://github.com/stendahls/portainer-templates",
           "stackfile": "stacks/linux.yml"
         },
         "env": [
@@ -32,7 +32,7 @@
         ],
         "platform": "linux",
         "repository": {
-          "url": "https://github.com/stendahls/ptest",
+          "url": "https://github.com/stendahls/portainer-templates",
           "stackfile": "stacks/linux-net.yml"
         },
         "env": [
@@ -85,7 +85,7 @@
         ],
         "platform": "linux",
         "repository": {
-          "url": "https://github.com/stendahls/ptest",
+          "url": "https://github.com/stendahls/portainer-templates",
           "stackfile": "stacks/linux-storage.yml"
         },
         "env": [
@@ -117,7 +117,7 @@
         ],
         "platform": "linux",
         "repository": {
-          "url": "https://github.com/stendahls/ptest",
+          "url": "https://github.com/stendahls/portainer-templates",
           "stackfile": "stacks/linux-net-storage.yml"
         },
         "env": [
@@ -176,7 +176,7 @@
         ],
         "platform": "linux",
         "repository": {
-          "url": "https://github.com/stendahls/ptest",
+          "url": "https://github.com/stendahls/portainer-templates",
           "stackfile": "stacks/linux-static-site.yml"
         },
         "env": [
@@ -219,7 +219,7 @@
         ],
         "platform": "Windows",
         "repository": {
-          "url": "https://github.com/stendahls/ptest",
+          "url": "https://github.com/stendahls/portainer-templates",
           "stackfile": "stacks/sitecore.yml"
         },
         "env": [
@@ -328,7 +328,7 @@
         ],
         "platform": "Linux",
         "repository": {
-          "url": "https://github.com/stendahls/ptest",
+          "url": "https://github.com/stendahls/portainer-templates",
           "stackfile": "stacks/solr.yml"
         },
         "env": [
