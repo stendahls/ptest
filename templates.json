@@ -2,6 +2,7 @@
     "version": "3",
     "templates": [
       {
+        "id": 1,
         "type": 2,
         "title": "Service (linux)",
         "description": "Simple non-accessible service",
