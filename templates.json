@@ -24,6 +24,7 @@
         ]
       },
       {
+        "id": 2,
         "type": 2,
         "title": "Service (linux, https)",
         "description": "Simple https-accessible service",
@@ -77,6 +78,7 @@
         ]
       },
       {
+        "id": 3,
         "type": 2,
         "title": "Service (linux, storage)",
         "description": "Simple service with persistent storage",
@@ -109,6 +111,7 @@
         ]
       },
       {
+        "id": 4,
         "type": 2,
         "title": "Service (linux, https, storage)",
         "description": "Simple https-accessible service with persistent storage",
@@ -168,6 +171,7 @@
         ]
       },
       {
+        "id": 5,
         "type": 2,
         "title": "Static site (linux, https, storage)",
         "description": "Simple https-accessible static site with persistent storage",
@@ -211,6 +215,7 @@
         ]
       },
       {
+        "id": 6,
         "type": 2,
         "title": "SiteCore (Windows, https)",
         "description": "SiteCore Package Dev Environment",
@@ -320,6 +325,7 @@
         ]
       },
       {
+        "id": 7,
         "type": 2,
         "title": "Solr (Linux, https)",
         "description": "Solr Dev Environment",
